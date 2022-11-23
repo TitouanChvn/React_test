@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 const Button = (props) => {
     const MaFonctionOnClick = () => {
         console.log('clicked')
+        props.onClick()
     }
 
   return (

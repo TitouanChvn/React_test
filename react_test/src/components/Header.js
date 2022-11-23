@@ -1,11 +1,13 @@
 import Button from "./Button"
 
-const Header = (props) => {
+const Header = ({donné_transférée, onAdd,showAdd}) => {
   return (
     <header className='header'>
         <h1 style={{color : 'green', backgroundColor: 'white'}}> Un Header d'un composant séparé</h1>
-        <p style={headingStyle}>{props.donné_transférée}</p>
-        <Button color='green' text ='Click me! '/>
+        <p style={headingStyle}>{donné_transférée}</p>
+        <Button color={!showAdd ? 'green': 'red'}
+        text ={!showAdd ? 'Show': 'Hide'} 
+        onClick={onAdd}/>
     </header>
   )
 }
