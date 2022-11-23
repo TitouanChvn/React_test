@@ -19,6 +19,9 @@ function App() {
 
   const name1 = 'Cookie'
 
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
 
   return (
     <div className="container">
@@ -27,7 +30,7 @@ function App() {
         <h2> First react App by {name1}</h2>
 
 
-      <Tasks tasks={tasks}/>
+      {tasks.length >0 ? <Tasks tasks={tasks} onDelete={deleteTask}/> : 'No tasks to show'}
 
    
     </div>
