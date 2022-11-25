@@ -1,4 +1,7 @@
 import Header from "./components/Header"; 
+import Footer from "./components/Footer"; 
+import { BrowserRouter as Router, Route ,Routes} from "react-router-dom";
+import About from "./components/About"; 
 import Tasks from "./components/Tasks";
 import {useState} from 'react'
 import AddTask from "./components/AddTask";
@@ -17,6 +20,7 @@ function App() {
     valeur: false,
     content: "description 2",
   }])
+
 
 
   const name1 = 'Cookie'
@@ -38,17 +42,28 @@ const addTask = (task) => {
       task.id === id ? {...task, valeur : !task.valeur} : task))
   }
   return (
+    <Router>
     <div className="container">
+        
+
+        
+      
+      <Routes>
+      <Route path='/' exact element={
+        <>
         <Header donné_transférée='Element' onAdd={()=>setShowAddTask(!showAddTask)}
         showAdd={showAddTask}/>
         <h1>Hello world</h1>
         <h2> First react App by {name1}</h2>
-
         {showAddTask && <AddTask onAdd={addTask}/>}
-      {tasks.length >0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No tasks to show'}
-
-   
+        {tasks.length >0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No tasks to show'}
+        </>
+      }/>
+      <Route path='/about' element={<About/>}/>
+      </Routes>
+        <Footer/> 
     </div>
+    </Router>
   );
 }
 
